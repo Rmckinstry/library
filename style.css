@@ -1,18 +1,39 @@
+body{
+    background-color: #8693AB;
+}
 main{
     display: flex;
 }
 div{
-    outline: black;
+    outline: #637074;
     outline-style: solid;
 }
 h1{
     text-align: center;
 }
 
-.test{
+.book-card{
     padding: 5px;
-    background-color: aqua;
+    background-color: #BDD4E7;
+    color: #212227;
 }
 #library-container{
     display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    
+}
+#add-book-form{
+    background-color:#AAB9CF;
+    color: #212227;
+    padding: 10px;
+    margin: 10px;
+}
+#add-book-form h2{
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}
+#add-book-form button{
+    padding: 10px 20px 10px 20px;
+    margin: 10px;
 }
