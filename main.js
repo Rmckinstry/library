@@ -3,6 +3,7 @@ function Book(title,author,pages,haveRead){
     this.author=author;
     this.pages=pages;
     this.haveRead=haveRead;
+    this.bookKey=Math.floor(Math.random()*99999999999999);
 }
 
 function addBookToLibrary(library,book){
@@ -13,6 +14,7 @@ function addBookToLibrary(library,book){
 
 function addCard(object){
     const div = document.createElement('div');
+    div.setAttribute('data-key',object.bookKey)
     div.classList.add('test')
     libraryContainer.append(div)
 
@@ -32,6 +34,15 @@ function addCard(object){
     const remove = document.createElement('button');
     remove.textContent = "Remove Book"
     div.append(remove);
+    remove.addEventListener('click',()=>{
+        datakey=remove.parentNode.getAttribute('data-key')
+        console.log(datakey)
+        /*
+        NEXT STEP IS TO REMOVE DOM ELEMENT MATCHING datakey AND OBJECT FROM ARRAY
+        */
+
+    })
+
 }
 
 Book.prototype.read=function(){
