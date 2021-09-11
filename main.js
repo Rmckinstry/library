@@ -35,6 +35,13 @@ function addCard(object){
     removeBttn.textContent = "Remove Book"
     div.append(removeBttn);
     
+    const toggleReadBttn = document.createElement('button');
+    toggleReadBttn.textContent = "Toggle Read"
+    div.append(toggleReadBttn);
+    /*
+    TODO: ADD TOGGLE READ FUNCTIONALITY
+    */
+
     removeBttn.addEventListener('click',()=>{
         datakey=Number(removeBttn.parentNode.getAttribute('data-key'))
         
