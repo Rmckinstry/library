@@ -31,26 +31,30 @@ function addCard(object){
     div.append(pages);
     div.append(read);
 
-    const remove = document.createElement('button');
-    remove.textContent = "Remove Book"
-    div.append(remove);
-    remove.addEventListener('click',()=>{
-        datakey=remove.parentNode.getAttribute('data-key')
-        console.log(datakey)
-        /*
-        NEXT STEP IS TO REMOVE DOM ELEMENT MATCHING datakey AND OBJECT FROM ARRAY
-        */
+    const removeBttn = document.createElement('button');
+    removeBttn.textContent = "Remove Book"
+    div.append(removeBttn);
+    
+    removeBttn.addEventListener('click',()=>{
+        datakey=Number(removeBttn.parentNode.getAttribute('data-key'))
+        
+        parent = removeBttn.parentNode;
+        parent.remove();
 
+        removeBook(datakey);
     })
 
+}
+
+function removeBook(uniqueKey){
+    const position = myLibrary.findIndex(key=> key.bookKey == uniqueKey)
+    myLibrary.splice(position,1)
+    return(myLibrary)
 }
 
 Book.prototype.read=function(){
     this.haveRead=true;
 }
-
-
-// const Book1 = new Book('The Outsiders', 'S.E. Hinton', 192, true);
 
 let myLibrary=[];
 
