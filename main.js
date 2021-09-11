@@ -28,6 +28,10 @@ function addCard(object){
     div.append(author);
     div.append(pages);
     div.append(read);
+
+    const remove = document.createElement('button');
+    remove.textContent = "Remove Book"
+    div.append(remove);
 }
 
 Book.prototype.read=function(){
