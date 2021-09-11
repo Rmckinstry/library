@@ -1,0 +1,18 @@
+main{
+    display: flex;
+}
+div{
+    outline: black;
+    outline-style: solid;
+}
+h1{
+    text-align: center;
+}
+
+.test{
+
+    background-color: aqua;
+}
+#library-container{
+    display: flex;
+}

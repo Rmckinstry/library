@@ -5,16 +5,55 @@ function Book(title,author,pages,haveRead){
     this.haveRead=haveRead;
 }
 
+function addBookToLibrary(library,book){
+    library.push(book);
+    addCard(book)
+    return (library)
+}
+
+function addCard(object){
+    const div = document.createElement('div');
+    div.classList.add('test')
+    libraryContainer.append(div)
+
+    const title = document.createElement('h2');
+    title.textContent=`Title: ${object.title}`;
+    const author = document.createElement('h3');
+    author.textContent=`Author: ${object.author}`;
+    const pages = document.createElement('h3');
+    pages.textContent=`Pages: ${object.pages}`;
+    const read = document.createElement('h3');
+    read.textContent = `Have Read: ${object.haveRead}`
+    div.append(title);
+    div.append(author);
+    div.append(pages);
+    div.append(read);
+}
+
 Book.prototype.read=function(){
     this.haveRead=true;
 }
 
-function addBookToLibrary(){
 
-}
+// const Book1 = new Book('The Outsiders', 'S.E. Hinton', 192, true);
 
 let myLibrary=[];
 
-const Book1 = new Book('The Outsiders', 'S.E. Hinton', 192, true);
-const Book2 = new Book('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 223, true);
-const Book3 = new Book('The Bible', 'Jesus', 1200, false);
+const libraryContainer = document.querySelector('#library-container')
+
+const submitButton = document.querySelector('#submit')
+submitButton.addEventListener('click',()=>{
+    const title = document.querySelector('#title').value
+    const author = document.querySelector('#author').value
+    const pages = document.querySelector('#pages').value
+    const read = document.querySelector('#read').checked
+
+    if (read == true){
+        const newBook = new Book (title, author, pages, true)
+        addBookToLibrary(myLibrary,newBook)
+    }
+    else{
+        const newBook = new Book (title, author, pages, false)
+        addBookToLibrary(myLibrary,newBook)
+    }
+})
