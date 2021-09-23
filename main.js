@@ -1,17 +1,28 @@
-//constructor for Book object
-function Book(title,author,pages,haveRead){
-    this.title=title;
-    this.author=author;
-    this.pages=pages;
-    this.haveRead=haveRead;
-    this.bookKey=Math.floor(Math.random()*99999999999999);
+class Book{
+    constructor(title,author,pages,haveRead){
+        this.title=title;
+        this.author=author;
+        this.pages=pages;
+        this.haveRead=haveRead;
+        this.bookKey=Math.floor(Math.random()*99999999999999);
+    }
+
+    toggleRead(){
+        if (this.haveRead==true){
+            this.haveRead=false
+        }
+        else{
+            this.haveRead=true
+        }  
+    }
+
+    addBookToLibrary(library){
+        library.push(this);
+        addCard(this)
+        return(library)
+    }
 }
-//adds a book object to myLibrary function
-function addBookToLibrary(library,book){
-    library.push(book);
-    addCard(book)
-    return (library)
-}
+
 
 //modifys DOM to add card div, and buttons to remove and toggle read
 function addCard(object){
@@ -41,9 +52,6 @@ function addCard(object){
     const toggleReadBttn = document.createElement('button');
     toggleReadBttn.textContent = "Toggle Read"
     div.append(toggleReadBttn);
-    /*
-    TODO: ADD TOGGLE READ FUNCTIONALITY
-    */
 
     removeBttn.addEventListener('click',()=>{
         datakey=Number(removeBttn.parentNode.getAttribute('data-key'))
@@ -82,15 +90,6 @@ function removeBook(position){
     return(myLibrary)
 }
 
-Book.prototype.toggleRead=function(){
-    if (this.haveRead==true){
-        this.haveRead=false
-    }
-    else{
-        this.haveRead=true
-    }
-}
-
 //start of program
 let myLibrary=[];
 
@@ -105,11 +104,11 @@ submitButton.addEventListener('click',()=>{
 
     if (read == true){
         const newBook = new Book (title, author, pages, true)
-        addBookToLibrary(myLibrary,newBook)
+        newBook.addBookToLibrary(myLibrary)
     }
     else{
         const newBook = new Book (title, author, pages, false)
-        addBookToLibrary(myLibrary,newBook)
+        newBook.addBookToLibrary(myLibrary)
     }
     //clears input field (kinda)
     document.getElementById('title').value= ""
@@ -117,3 +116,5 @@ submitButton.addEventListener('click',()=>{
     document.getElementById('pages').value= ""
     document.getElementById('read').checked= false;
 })
+
+let book1 = new Book ('sdf','sdfdfg','109', true);
