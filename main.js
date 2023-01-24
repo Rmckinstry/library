@@ -116,3 +116,5 @@ submitButton.addEventListener("click", () => {
   addBookToLibrary(myLibrary, book);
   clearForm();
 });
+
+let book1 = new Book("sdf", "sdfdfg", "109", true);
