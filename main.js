@@ -111,9 +111,7 @@ submitButton.addEventListener("click", () => {
   const read = document.querySelector("#read").checked;
 
   const book = new Book(title, author, pages, read, ++keyTracker);
-  console.log(book.bookKey);
+
   addBookToLibrary(myLibrary, book);
   clearForm();
 });
-
-let book1 = new Book("sdf", "sdfdfg", "109", true);
