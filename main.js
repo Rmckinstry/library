@@ -52,10 +52,10 @@ function addCard(object) {
   toggleReadBttn.textContent = "Toggle Read";
   div.append(toggleReadBttn);
 
+  const datakey = Number(removeBttn.parentNode.getAttribute("data-key"));
+
   // remove book event
   removeBttn.addEventListener("click", () => {
-    datakey = Number(removeBttn.parentNode.getAttribute("data-key"));
-
     parent = removeBttn.parentNode;
     parent.remove();
 
@@ -73,7 +73,6 @@ function addCard(object) {
       child.textContent = "Have Read: false";
     }
     //changes value in object
-    datakey = Number(toggleReadBttn.parentNode.getAttribute("data-key"));
     myLibrary[getIndex(datakey)].toggleRead();
   });
 }
