@@ -17,10 +17,10 @@ Book.prototype.toggleRead = function () {
 };
 
 //adds a book object to myLibrary function
-function addBookToLibrary(library, book) {
-  library.push(book);
+function addBookToLibrary(book) {
+  myLibrary.push(book);
   addCard(book);
-  return library;
+  return myLibrary;
 }
 
 //modifys DOM to add card div, and buttons to remove and toggle read
@@ -111,7 +111,10 @@ submitButton.addEventListener("click", () => {
   const read = document.querySelector("#read").checked;
 
   const book = new Book(title, author, pages, read, ++keyTracker);
-
-  addBookToLibrary(myLibrary, book);
+  console.log(book.bookKey);
+  addBookToLibrary(book);
   clearForm();
 });
+
+let book1 = new Book("sdf", "sdfdfg", "109", true);
+addBookToLibrary(book1);
