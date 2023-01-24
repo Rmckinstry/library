@@ -60,3 +60,10 @@ button:hover {
   padding: 10px 20px 10px 20px;
   margin: 10px;
 }
+
+#add-book-form button:hover {
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+  background-color: #4c6663;
+  color: white;
+}
