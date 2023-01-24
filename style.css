@@ -1,5 +1,5 @@
 body {
-  background-color: #8693ab;
+  background-color: #c9d7f8;
 }
 main {
   display: flex;
@@ -12,22 +12,46 @@ h1 {
   text-align: center;
 }
 
+button:hover {
+  cursor: pointer;
+  background-color: #d4c5e2;
+}
+
 .book-card {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-evenly;
+
   padding: 5px;
-  background-color: #bdd4e7;
+  background-color: #4c6663;
   color: #212227;
+  height: 400px;
+}
+
+.book-card h2 {
+  color: white;
+}
+
+.book-card h3 {
+  color: white;
 }
 #library-container {
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
+  gap: 20px;
+
+  outline-style: none;
 }
 #add-book-form {
-  background-color: #aab9cf;
+  background-color: #d4c5e2;
   color: #212227;
   padding: 10px;
   margin: 10px;
+  height: 500px;
 }
+
 #add-book-form h2 {
   text-align: center;
   padding: 10px 0px 10px 0px;
