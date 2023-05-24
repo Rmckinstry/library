@@ -44,6 +44,8 @@ function addBookToLibrary(book) {
 function addCard(object) {
   const div = document.createElement("div");
   div.setAttribute("data-key", object.bookKey);
+  const datakey = Number(div.getAttribute("data-key"));
+
   div.classList.add("book-card");
   libraryContainer.append(div);
 
@@ -68,8 +70,6 @@ function addCard(object) {
   const toggleReadBttn = document.createElement("button");
   toggleReadBttn.textContent = "Toggle Read";
   div.append(toggleReadBttn);
-
-  const datakey = Number(removeBttn.parentNode.getAttribute("data-key"));
 
   // remove book event
   removeBttn.addEventListener("click", () => {
@@ -132,5 +132,5 @@ submitButton.addEventListener("click", () => {
   clearForm();
 });
 
-let book1 = new Book("sdf", "sdfdfg", "109", true);
+let book1 = new Book("sdf", "sdfdfg", "109", true,0);
 addBookToLibrary(book1);
