@@ -1,20 +1,37 @@
-//constructor for Book object
-function Book(title, author, pages, haveRead, key) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.haveRead = haveRead;
-  this.bookKey = key;
+// function Book(title, author, pages, haveRead, key) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.haveRead = haveRead;
+//   this.bookKey = key;
+// }
+
+class Book {
+  constructor(title, author, pages, haveRead, key){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.haveRead = haveRead;
+    this.bookKey = key;
+  }
+
+  toggleRead(){
+    if (this.haveRead == true) {
+      this.haveRead = false;
+    } else {
+      this.haveRead = true;
+    }
+  }
 }
 
 // adds toggle read function to Book prototype
-Book.prototype.toggleRead = function () {
-  if (this.haveRead == true) {
-    this.haveRead = false;
-  } else {
-    this.haveRead = true;
-  }
-};
+// Book.prototype.toggleRead = function () {
+//   if (this.haveRead == true) {
+//     this.haveRead = false;
+//   } else {
+//     this.haveRead = true;
+//   }
+// };
 
 //adds a book object to myLibrary function
 function addBookToLibrary(book) {
@@ -111,7 +128,6 @@ submitButton.addEventListener("click", () => {
   const read = document.querySelector("#read").checked;
 
   const book = new Book(title, author, pages, read, ++keyTracker);
-  console.log(book.bookKey);
   addBookToLibrary(book);
   clearForm();
 });
