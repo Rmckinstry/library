@@ -1,20 +1,20 @@
-//constructor for Book object
-function Book(title, author, pages, haveRead, key) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.haveRead = haveRead;
-  this.bookKey = key;
-}
-
-// adds toggle read function to Book prototype
-Book.prototype.toggleRead = function () {
-  if (this.haveRead == true) {
-    this.haveRead = false;
-  } else {
-    this.haveRead = true;
+class Book {
+  constructor(title, author, pages, haveRead, key){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.haveRead = haveRead;
+    this.bookKey = key;
   }
-};
+
+  toggleRead(){
+    if (this.haveRead == true) {
+      this.haveRead = false;
+    } else {
+      this.haveRead = true;
+    }
+  }
+}
 
 //adds a book object to myLibrary function
 function addBookToLibrary(book) {
@@ -27,32 +27,31 @@ function addBookToLibrary(book) {
 function addCard(object) {
   const div = document.createElement("div");
   div.setAttribute("data-key", object.bookKey);
+  const datakey = Number(div.getAttribute("data-key"));
+
   div.classList.add("book-card");
   libraryContainer.append(div);
 
   const cardTitle = document.createElement("h2");
   cardTitle.textContent = `Title: ${object.title}`;
+
   const cardAuthor = document.createElement("h3");
   cardAuthor.textContent = `Author: ${object.author}`;
+
   const cardPages = document.createElement("h3");
   cardPages.textContent = `Pages: ${object.pages}`;
+
   const cardRead = document.createElement("h3");
   cardRead.setAttribute("id", "have-read");
   cardRead.textContent = `Have Read: ${object.haveRead}`;
-  div.append(cardTitle);
-  div.append(cardAuthor);
-  div.append(cardPages);
-  div.append(cardRead);
 
   const removeBttn = document.createElement("button");
   removeBttn.textContent = "Remove Book";
-  div.append(removeBttn);
 
   const toggleReadBttn = document.createElement("button");
   toggleReadBttn.textContent = "Toggle Read";
-  div.append(toggleReadBttn);
 
-  const datakey = Number(removeBttn.parentNode.getAttribute("data-key"));
+  div.append(cardTitle,cardAuthor,cardPages,cardRead,removeBttn,toggleReadBttn);
 
   // remove book event
   removeBttn.addEventListener("click", () => {
@@ -111,10 +110,6 @@ submitButton.addEventListener("click", () => {
   const read = document.querySelector("#read").checked;
 
   const book = new Book(title, author, pages, read, ++keyTracker);
-  console.log(book.bookKey);
   addBookToLibrary(book);
   clearForm();
 });
-
-let book1 = new Book("sdf", "sdfdfg", "109", true);
-addBookToLibrary(book1);
